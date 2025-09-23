@@ -1,0 +1,386 @@
+{% comment %}
+🔮 Oracle's Dream Shop Section
+Auto-slide all products (image + text) every 2 seconds with smooth fade
+{% endcomment %}
+
+<section class="oracle-shop" id="oracle-shop-{{ section.id }}"
+  style="
+    {% if section.settings.bg_image != blank %}
+      background-image: url('{{ section.settings.bg_image | image_url: width: 1600 }}');
+      background-size: cover;
+      background-position: center;
+    {% else %}
+      background-color: #000;
+    {% endif %}
+  "
+>
+
+<div class="oracle-container">
+    <!-- Title -->
+    <div class="oracle-heading">
+      {% if section.settings.heading != blank %}<h1>{{ section.settings.heading }}</h1>{% endif %}
+      {% if section.settings.subtitle != blank %}<p class="subtitle">{{ section.settings.subtitle }}</p>{% endif %}
+    </div>
+
+    <!-- Oracle + Product Row -->
+    <div class="oracle-product-row">
+       <!-- Oracle Side -->
+      <div class="oracle-side">
+        {% if section.settings.oracle_img != blank %}
+          <img class="oracle-img" src="{{ section.settings.oracle_img | image_url }}" alt="Oracle">
+        {% endif %}
+        {% if section.settings.speech != blank %}
+          <div class="oracle-speech">{{ section.settings.speech }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Product Slider -->
+      <div class="product-slider-wrapper">
+        <div class="product-slider float-card" id="slider-{{ section.id }}">
+          {% for block in section.blocks %}
+            {% assign product = all_products[block.settings.product] %}
+            {% if product != blank %}
+              <div class="slide {% if forloop.first %}active{% endif %}">
+                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
+                <h2>{{ product.title| strip_html | slice: 0, 80 }}...</h2>
+                {% comment %} <p>{{ product.description | strip_html | truncate: 140 }}</p> {% endcomment %}
+                <p>{{ product.description | strip_html | slice: 0, 80 }}</p>
+
+                <p class="price">{{ product.price | money }}</p>
+                <div class="btn-group">
+                  <a href="{{ product.url }}" class="btn details">View Details</a>
+                <form class="form" method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <button type="submit" class="btn cart">Add to Cart</button>
+                </form>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <!-- Slider Navigation -->
+        <div class="slider-nav">
+          {% for block in section.blocks %}
+            <span class="slider-dot {% if forloop.first %}active{% endif %}" onclick="showSlide{{ section.id }}({{ forloop.index0 }})"></span>
+          {% endfor %}
+        </div>
+
+        <!-- Bottom Buttons -->
+        <div class="oracle-buttons">
+          <a href="#shop-products" class="btn explore">🌟 Explore the Shop</a>
+          <a href="#oracle-wisdom" class="btn wisdom">🔮 Oracle's Wisdom</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% stylesheet %}
+
+.btn-group {
+  display: flex;
+  align-items: center; /* vertically centers items */
+  justify-content:center;
+  gap: 5px; /* space between input and button */
+}
+
+.oracle-shop{
+  position:relative;
+}
+
+.oracle-shop::before{
+  content:" ";
+  position:absolute;
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  background:black;
+  opacity:0.5;
+}
+
+
+.slide h2{
+  color:white;
+}
+.slide p{
+  font-weight: bold;
+  font-size: 200px;
+}
+
+.oracle-buttons a{
+  text-decoration: none;
+}
+
+.oracle-heading .subtitle{
+  color:white;
+}
+
+
+/* Main Container */
+#oracle-shop-{{ section.id }} {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  position: relative;
+}
+
+#oracle-shop-{{ section.id }} .oracle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Title */
+#oracle-shop-{{ section.id }} .oracle-heading {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 100px;
+}
+#oracle-shop-{{ section.id }} h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #4ae5ff, #00ff80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: glow 3s infinite alternate;
+}
+#oracle-shop-{{ section.id }} .subtitle {
+  color: #ddd;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+@keyframes glow {
+  0% { text-shadow: 0 0 10px #0ff; }
+  100% { text-shadow: 0 0 20px #00ff80; }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,100% { transform: translateY(0);}
+  50% { transform: translateY(-15px);}
+}
+#oracle-shop-{{ section.id }} .float-card {
+  animation: float 5s ease-in-out infinite;
+  transition: opacity 0.5s ease;
+}
+
+/* Oracle + Product Row */
+#oracle-shop-{{ section.id }} .oracle-product-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-right: 290px;
+  gap: 80px;
+}
+
+/* Oracle Side */
+#oracle-shop-{{ section.id }} .oracle-side {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#oracle-shop-{{ section.id }} .oracle-img {
+  width: 220px;
+  animation: float 4s ease-in-out infinite;
+}
+#oracle-shop-{{ section.id }} .oracle-speech {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 15px;
+  background: rgba(0,0,0,0.85);
+  padding: 12px 16px;
+  border-radius: 12px;
+  max-width: 250px;
+  font-size: 14px;
+  color: #fff;
+}
+#oracle-shop-{{ section.id }} .oracle-speech::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0.85) transparent transparent transparent;
+}
+
+/* Product Slider */
+#oracle-shop-{{ section.id }} .product-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#oracle-shop-{{ section.id }} .product-slider {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 0 25px rgba(0,255,255,0.35);
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+}
+#oracle-shop-{{ section.id }} .product-slider img {
+  width: 140px;
+  margin-bottom: 20px;
+}
+#oracle-shop-{{ section.id }} .product-slider h2 {
+  font-size: 1.5rem;
+  margin: 12px 0;
+}
+#oracle-shop-{{ section.id }} .product-slider p {
+  font-size: 1rem;
+  color: #ccc;
+}
+#oracle-shop-{{ section.id }} .product-slider .price {
+  font-size: 1.5rem;
+  color: #00ffcc;
+  margin: 15px 0;
+}
+
+/* Slide */
+#oracle-shop-{{ section.id }} .product-slider .slide {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  position: absolute;
+  top:0; left:0; width:100%;
+}
+#oracle-shop-{{ section.id }} .product-slider .slide.active {
+  display: block;
+  opacity: 1;
+  position: relative;
+}
+
+/* Buttons */
+#oracle-shop-{{ section.id }} .btn {
+  margin: 6px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#oracle-shop-{{ section.id }} .btn.details { background:#222; color:#fff; }
+#oracle-shop-{{ section.id }} .btn.cart { background:#00ff80; color:#000; }
+#oracle-shop-{{ section.id }} .btn.explore { background:#00ff80; color:#000; }
+#oracle-shop-{{ section.id }} .btn.wisdom { background:#111; color:#fff; }
+#oracle-shop-{{ section.id }} .btn:hover { transform: scale(1.05); }
+
+/* Bottom Buttons */
+#oracle-shop-{{ section.id }} .oracle-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+/* Slider Dots */
+#oracle-shop-{{ section.id }} .slider-nav {
+  margin-top: 15px;
+}
+#oracle-shop-{{ section.id }} .slider-dot {
+  height: 12px;
+  width: 12px;
+  background: #444;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 6px;
+  cursor: pointer;
+}
+#oracle-shop-{{ section.id }} .slider-dot.active { background:#00ffcc; }
+
+/* Responsive */
+@media(max-width: 768px) {
+  #oracle-shop-{{ section.id }} .oracle-product-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-right: 0;
+  }
+  #oracle-shop-{{ section.id }} .product-slider-wrapper { order: 1; }
+  #oracle-shop-{{ section.id }} .oracle-side { order: 2; margin-top: 20px; }
+  #oracle-shop-{{ section.id }} .product-slider { max-width: 90%; width: 100%; }
+  #oracle-shop-{{ section.id }} .product-slider img { width: 120px; }
+  #oracle-shop-{{ section.id }} .oracle-img { width: 160px; }
+  #oracle-shop-{{ section.id }} .oracle-speech { position: static; margin-bottom: 12px; font-size: 13px; max-width: 90%; }
+  #oracle-shop-{{ section.id }} .oracle-speech::after { display: none; }
+  #oracle-shop-{{ section.id }} .btn { padding: 10px 18px; font-size: 0.9rem; }
+}
+{% endstylesheet %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = Array.from(document.querySelectorAll("#slider-{{ section.id }} .slide"));
+  const dots = Array.from(document.querySelectorAll("#oracle-shop-{{ section.id }} .slider-dot"));
+  if (slides.length === 0) return;
+
+  let currentIndex = 0;
+  let interval = null;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    currentIndex = index;
+  }
+
+  function startInterval() {
+    clearInterval(interval);
+    interval = setInterval(() => {
+      let nextIndex = (currentIndex + 1) % slides.length;
+      showSlide(nextIndex);
+    }, 4000); // 2s per slide
+  }
+
+  // Initialize
+  showSlide(0);
+  startInterval();
+
+  // Pause on hover
+  slides.forEach(slide => {
+    slide.addEventListener("mouseenter", () => clearInterval(interval));
+    slide.addEventListener("mouseleave", startInterval);
+  });
+
+  // Dot navigation
+  dots.forEach((dot, i) => dot.addEventListener("click", () => {
+    showSlide(i);
+    startInterval();
+  }));
+});
+</script>
+
+{% schema %}
+{
+  "name": "Oracle Dream Shop",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Oracle's Dream Shop" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "Enter the mystical realm where dreams and reality intertwine..." },
+    { "type": "textarea", "id": "speech", "label": "Oracle Speech", "default": "Welcome, seeker of mystical treasures! Step through my portal to discover ancient secrets..." },
+    { "type": "image_picker", "id": "oracle_img", "label": "Oracle Image" },
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Select product" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "Oracle Dream Shop", "category": "Custom" }]
+}
+{% endschema %}
