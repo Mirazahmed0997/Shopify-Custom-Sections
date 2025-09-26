@@ -2,10 +2,10 @@
   Floating Navbar Section (Responsive + Hamburger Menu)
 {% endcomment %}
 
+
+
 <section class="floating-navbar">
-    
-          <div class="nav-container">
-    
+  <div class="nav-container">
     <!-- Logo -->
     <a href="/" class="nav-logo">
       {% if section.settings.logo_icon != blank %}
@@ -17,7 +17,7 @@
     <!-- Desktop Menu -->
     <nav class="nav-links desktop-nav">
       {% for block in section.blocks %}
-<a href="{{ block.settings.link }}" class="nav-link{% if block.settings.active %} active{% endif %}">
+        <a href="{{ block.settings.link }}" class="nav-link{% if block.settings.active %} active{% endif %}">
           {% if block.settings.icon != blank %}
             <span class="nav-link-icon">{{ block.settings.icon }}</span>
           {% endif %}
@@ -28,26 +28,15 @@
 
     <!-- Icons + Hamburger -->
     <div class="nav-right">
-    <!-- Search Icon -->
-  <!-- Search Icon -->
-{% if section.settings.show_search %}
-  <button class="nav-icon search-icon" aria-label="Search">
-    🔍
-  </button>
-{% endif %}
-
-
+      {% if section.settings.show_search %}
+        <button class="nav-icon search-icon" aria-label="Search">🔍</button>
+      {% endif %}
       {% if section.settings.show_cart %}
         <a href="/cart" class="nav-icon">🛒</a>
       {% endif %}
-
-      <!-- Hamburger Button -->
-      <button class="hamburger" id="navToggle" aria-label="Menu">
-        ☰
-      </button>
+      <button class="hamburger" id="navToggle" aria-label="Menu">☰</button>
     </div>
   </div>
-  
 
   <!-- Mobile Dropdown Menu -->
   <div class="mobile-nav" id="mobileNav">
@@ -62,82 +51,36 @@
   </div>
 </section>
 
+<!-- Search Container -->
+<div class="search-container" id="searchContainer">
+  <form action="/search" method="get" class="search-form">
+    <input type="text" name="q" class="search-field" placeholder="Search...">
+    <button type="submit" class="search-btn">Search</button>
+  </form>
+</div>
+
 <style>
-
-.search-container {
-  position: absolute;
-  top: 100%; /* Position it directly below the search icon */
-  left: 50%;
-  transform: translateX(-50%); /* Center the search field horizontally */
-  width: 100%; /* Adjust the width of the search field */
-  margin-top: 10px; /* Space between the icon and the field */
-  display: none; /* Initially hidden */
-  padding: 5px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.search-form {
-  width: 100%;
-  display: flex;
-  gap: 10px;
-}
-
-.search-field {
-  width: 100%;
-  padding: 15px;
-  font-size: 14px;
-  border-radius: 20px;
- 
-}
-
-.search-field:focus {
-  border-color: #4ade80; /* Focused state color */
-}
-
-.search-btn {
-  padding: 8px 12px;
-  background-color: #151A26;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  font-size: 14px;
-}
-
-{% comment %} .search-btn:hover {
-  background-color: #22c55e;
-} {% endcomment %}
-
-.search-icon {
-  cursor: pointer;
-}
-
-
-
-
-
-
-/* Navbar Container */
-
+/* ===========================
+   Floating Navbar
+=========================== */
 .floating-navbar {
-  position: fixed;   /* stick to top */
+  position: fixed;
   top: 10px;
-  left: 50%;          /* center horizontally */
+  left: 50%;
   transform: translateX(-50%);
   z-index: 9999;
   background: #151A26;
   border-radius: 50px;
   max-width: 1200px;
-  width: 90%;          /* responsive width */
+  width: 90%;
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
   animation: floatNavbar 4s ease-in-out infinite;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Floating Animation */
+/* Floating animation */
 @keyframes floatNavbar {
   0%, 100% { transform: translate(-50%, 0); }
   50% { transform: translate(-50%, -4px); }
@@ -153,7 +96,7 @@
 .nav-logo {
   display: flex;
   align-items: center;
-  font-size: 1.3rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: bold;
   color: #4ade80;
   text-decoration: none;
@@ -182,95 +125,120 @@
 }
 
 .nav-icon {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   text-decoration: none;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 .nav-icon:hover { transform: scale(1.2); }
 
-/* Hamburger */
 .hamburger {
   display: none;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: white;
   background: none;
   border: none;
   cursor: pointer;
 }
 
-/* Mobile Nav */
+/* ===========================
+   Mobile Nav Dropdown
+=========================== */
 .mobile-nav {
   display: none;
   flex-direction: column;
   background: #0b1221;
   border-radius: 0 0 20px 20px;
-  padding: 10px 0;
+  padding: 8px 0;
   margin-top: 10px;
 }
 .mobile-link {
   color: white;
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 12px 20px;
   display: block;
+  font-size: 1rem;
   transition: background 0.3s ease;
 }
 .mobile-link:hover { background: rgba(255,255,255,0.1); }
 .mobile-link.active { background: #22c55e; color: white; }
 
-/* Responsive */
-
-/* Tablets & Mobile */
-@media (max-width: 1200px) {
-  .floating-navbar { max-width: 90%; padding: 10px 16px; }
+/* ===========================
+   Search Box
+=========================== */
+.search-container {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(500px, 90%);
+  display: none;
+  background-color: #151A26;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile devices <= 768px */
+.search-form {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.search-field {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+.search-field:focus { border-color: #4ade80; }
+
+.search-btn {
+  padding: 10px 14px;
+  background-color: #4ade80;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+}
+.search-btn:hover { background-color: #22c55e; }
+
+/* ===========================
+   Responsive Adjustments
+=========================== */
+@media (max-width: 1024px) {
+  .nav-links { gap: 12px; }
+}
+
 @media (max-width: 768px) {
-  .floating-navbar { 
-    max-width: 95%; 
-    padding: 8px 12px; 
-    border-radius: 30px; 
-    margin-left: -68px;
+  .floating-navbar {
+    width: 95%;
+    padding: 8px 16px;
+    border-radius: 30px;
   }
   .desktop-nav { display: none !important; }
   .hamburger { display: block !important; }
   .nav-right { gap: 10px; }
-  .mobile-nav { width: 100%; padding: 8px 0; }
-  .mobile-link { padding: 8px 15px; }
-  .nav-logo { font-size: 3rem; }
 }
 
-/* Small phones <= 480px */
 @media (max-width: 480px) {
-  .floating-navbar { 
-    max-width: 95%; 
-    padding: 6px 10px; 
-    padding-top: 20px; 
-    padding-bottom: 20px; 
-    border-radius: 20px; 
+  .floating-navbar {
+    width: 95%;
+    padding: 12px;
+    border-radius: 20px;
   }
-  .nav-logo { font-size: 2.2rem; }
-  .nav-icon { font-size: 2.2rem; }
-  .hamburger { font-size: 2.2rem; }
-}
-
-/* Large screens > 1400px */
-@media (min-width: 1401px) {
-  .floating-navbar { max-width: 1200px; }
+  .nav-logo { font-size: 1.3rem; }
+  .nav-icon, .hamburger { font-size: 1.5rem; }
+  .search-container { width: 95%; }
 }
 </style>
 
 
+
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const navToggle = document.getElementById('navToggle');
-  const mobileNav = document.getElementById('mobileNav');
-
-  navToggle.addEventListener('click', () => {
-    mobileNav.style.display = (mobileNav.style.display === 'flex') ? 'none' : 'flex';
-  });
-});
-
 
 
 
@@ -327,21 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
     searchContainer.style.display = (searchContainer.style.display === 'none' || !searchContainer.style.display) ? 'block' : 'none';
     searchField.focus();  // Focus on the input field when search is shown
   });
-
-  // Prevent form submission and keep the search input
-  searchForm.addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent page reload (form reset)
-    
-    // Perform search using JavaScript (with URL change)
-    const searchQuery = searchField.value;
-    if (searchQuery) {
-      // Redirect to the Shopify search page
-      window.location.href = '/search?q=' + encodeURIComponent(searchQuery);
-    }
-  });
 });
-
-
 
 
 
