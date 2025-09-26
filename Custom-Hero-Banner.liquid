@@ -17,35 +17,73 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
 
 <div class="oracle-container">
     <!-- Title -->
-    <div class="oracle-heading">
-      {% if section.settings.heading != blank %}<h1>{{ section.settings.heading }}</h1>{% endif %}
-      {% if section.settings.subtitle != blank %}<p class="subtitle">{{ section.settings.subtitle }}</p>{% endif %}
-    </div>
+   <div class="oracle-heading">
+  {% if section.settings.heading != blank %}
+    <h1 class="heading">{{ section.settings.heading }}</h1>
+  {% endif %}
+
+  {% if section.settings.heading2 != blank %}
+    <h2 class="heading2">{{ section.settings.heading2 }}</h2>
+  {% endif %}
+
+  {% if section.settings.subtitle != blank %}
+    <p class="subtitle">{{ section.settings.subtitle }}</p>
+  {% endif %}
+</div>
+
+
+    
 
     <!-- Oracle + Product Row -->
     <div class="oracle-product-row">
+      
        <!-- Oracle Side -->
-      <div class="oracle-side">
+      <div class="oracle-side" style="position:relative">
+        <svg xmlns="http://www.w3.org/2000/svg" class="star" style="color:green;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles absolute w-4 h-4 text-accent animate-ping" style="top: 67.453%; left: 56.1481%; animation-delay: 0s; animation-duration: 3s;"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="star" style="color:green;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles absolute w-4 h-4 text-accent animate-ping" style="top: 67.453%; left: 56.1481%; animation-delay: 0s; animation-duration: 3s;"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="star" style="color:green;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles absolute w-4 h-4 text-accent animate-ping" style="top: 67.453%; left: 56.1481%; animation-delay: 0s; animation-duration: 3s;"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="star" style="color:green;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles absolute w-4 h-4 text-accent animate-ping" style="top: 67.453%; left: 56.1481%; animation-delay: 0s; animation-duration: 3s;"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+         <svg xmlns="http://www.w3.org/2000/svg" class="star" style="color:green;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles absolute w-4 h-4 text-accent animate-ping" style="top: 67.453%; left: 56.1481%; animation-delay: 0s; animation-duration: 3s;"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="star" style="color:green;" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles absolute w-4 h-4 text-accent animate-ping" style="top: 67.453%; left: 56.1481%; animation-delay: 0s; animation-duration: 3s;"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
+      
         {% if section.settings.oracle_img != blank %}
           <img class="oracle-img" src="{{ section.settings.oracle_img | image_url }}" alt="Oracle">
         {% endif %}
+                
+
         {% if section.settings.speech != blank %}
           <div class="oracle-speech">{{ section.settings.speech }}</div>
         {% endif %}
-      </div>
+               </div>
 
       <!-- Product Slider -->
-      <div class="product-slider-wrapper">
+    <div class="product-slider-wrapper" style="position:relative">
+       <div class="card-circle">
+        <div class="inner-card-circle">
+           <div >
+
+          <div class="radial-wrap" id="radialWrap" style="position: absolute; top:0; left:0">
+            <div class="radial">
+                <div class="item" style="display:block !important"></div>
+                <div class="item" style="display:block !important"></div>
+                <div class="item" style="display:block !important"></div>
+                <div class="item" style="display:block !important"></div>
+            </div>
+          </div>
         <div class="product-slider float-card" id="slider-{{ section.id }}">
           {% for block in section.blocks %}
             {% assign product = all_products[block.settings.product] %}
             {% if product != blank %}
               <div class="slide {% if forloop.first %}active{% endif %}">
-                <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
-                <h2>{{ product.title| strip_html | slice: 0, 80 }}...</h2>
-                {% comment %} <p>{{ product.description | strip_html | truncate: 140 }}</p> {% endcomment %}
-                <p>{{ product.description | strip_html | slice: 0, 80 }}</p>
 
+
+                <div class="img-bg">
+                  <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}">
+                </div>
+
+
+                <h2>{{ product.title| strip_html | slice: 0, 80 }}...</h2>
+                <p>{{ product.description | strip_html | slice: 0, 80 }}</p>
                 <p class="price">{{ product.price | money }}</p>
                 <div class="btn-group">
                   <a href="{{ product.url }}" class="btn details">View Details</a>
@@ -60,22 +98,233 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
         </div>
 
         <!-- Slider Navigation -->
-        <div class="slider-nav">
+       
+      </div>
+        </div>
+     </div>
+
+
+
+      <div class="slider-nav">
           {% for block in section.blocks %}
             <span class="slider-dot {% if forloop.first %}active{% endif %}" onclick="showSlide{{ section.id }}({{ forloop.index0 }})"></span>
           {% endfor %}
         </div>
 
         <!-- Bottom Buttons -->
-        <div class="oracle-buttons">
-          <a href="#shop-products" class="btn explore">🌟 Explore the Shop</a>
-          <a href="#oracle-wisdom" class="btn wisdom">🔮 Oracle's Wisdom</a>
-        </div>
-      </div>
+       <div id="oracle-shop-{{ section.id }}">
+  <div class="oracle-speech"></div>
+
+  <div class="oracle-buttons">
+    <a href="#products-section"  class="btn explore">🌟 Explore the Shop</a>
+    <a href="#oracle-wisdom" class="btn wisdom">🔮 Oracle's Wisdom</a>
+  </div>
+</div>
+    </div>
     </div>
 </div>
 
 {% stylesheet %}
+
+
+
+.product-slider {
+  position: absolute;
+  top: 50%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+  z-index: 10; /* make sure it's above the circle radial */
+  max-width: 350px; /* adjust to match your design */
+  text-align: center;
+}
+
+ /* Transparent background */
+        .product-slider-wrapper {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+        }
+/* 
+        /* Outer Circle */
+   .card-circle {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 0 15px #2962A9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: float 7s ease-in-out infinite; 
+    /* Apply the floating animation */
+}
+
+/* Inner Circle */
+.inner-card-circle {
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 0 15px #2962A9;
+    animation: float 5s ease-in-out infinite; 
+    /* Apply the floating animation to the inner circle as well */
+}
+
+/* Floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(-15px);
+        box-shadow: 0 0 15px #2962A9; /* Initial shadow position */
+    }
+    50% {
+        transform: translateY(-10px); /* Move the circle up */
+        box-shadow: 0 20px 25px rgba(41, 98, 169, 0.5); /* Shadow becomes larger */
+    }
+    100% {
+        transform: translateY(-10px); /* Move the circle back to its original position */
+        box-shadow: 0 0 15px #2962A9; /* Shadow resets to original size */
+    }
+}
+
+
+        /* Outer Animation */
+        @keyframes pulseOuter {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.95);
+                opacity: 0.8;
+            }
+        }
+
+        /* Inner Animation */
+        @keyframes pulseInner {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.9);
+                opacity: 0.7;
+            }
+        }
+
+
+.img-bg{
+  
+  width:100%;
+  border-radius:30%;
+  height: 150px;
+  background-color:#1D2A3F
+  
+}
+
+ /* custom-neloy star animation start */
+
+.star {
+  animation: blink 4s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+ .star:nth-child(1){
+  position:absolute;
+  animation-delay: 0.5s;
+ }
+ .star:nth-child(2) {
+    z-index: 9;
+    position: absolute;
+    top: 22%;
+    animation-delay: 0.7s;
+}
+ .star:nth-child(3) {
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    animation-delay: 0.9s;
+}
+.star:nth-child(4) {
+    position: absolute;
+    top: 20%;
+    left: 14%;
+    animation-delay: 1.5s;
+}
+ .star:nth-child(5) {
+    position: absolute;
+    bottom: 30%;
+    left: 10px;
+    animation-delay: 1.3s;
+}
+ .star:nth-child(6) {
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    animation-delay: 1s;
+}
+
+ /* custom-neloy star animation end */
+
+.product-slider-wrapper {
+  max-width: 1000px; /* max width of the whole slider wrapper */
+  margin: 0 auto; /* center the slider */
+  padding: 20px; /* optional padding */
+  height: 100%;
+
+}
+
+.product-slider .slide {
+  max-width: 300px; /* restrict each card width */
+  margin: 0 auto; /* center each slide inside the slider */
+}
+
+.product-slider .slide img{
+ border-radius:50%;
+ border: 5px solid;
+ border-color:#254C75;
+ margin-top:5px
+}
+
+.product-slider-wrapper .btn-group {
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* center buttons under each card */
+}
+
+.oracle-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+
+
+
 
 .btn-group {
   display: flex;
@@ -86,6 +335,7 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
 
 .oracle-shop{
   position:relative;
+  z-index:1;
 }
 
 .oracle-shop::before{
@@ -96,7 +346,8 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
   top:0;
   left:0;
   background:black;
-  opacity:0.5;
+  opacity:0.3;
+  z-index:-1;
 }
 
 
@@ -106,6 +357,7 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
 .slide p{
   font-weight: bold;
   font-size: 200px;
+ 
 }
 
 .oracle-buttons a{
@@ -114,6 +366,55 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
 
 .oracle-heading .subtitle{
   color:white;
+}
+
+
+
+h1.heading {
+  font-size: 3.5em;
+  font-weight: 700;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0px;
+   font-family: 'Cinzel', serif;
+
+}
+
+h2.heading2 {
+  font-size: 3.5em;
+  font-weight: 700;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: -60px;
+   font-family: 'Cinzel', serif;
+}
+P.subtitle {
+  
+  margin-top: -50px;
+}
+
+/* Blue gradient for "The" and the 's */
+.blue {
+      background: linear-gradient(90deg, #0a4da3, #3ba6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+/* Green → Blue gradient for "Oracle" */
+.greenblue {
+      background: linear-gradient(90deg, #00c853, #2196f3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+/* Only white text */
+.white {
+  /* No gradient, just solid white */
+  color: #ffffff;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
 }
 
 
@@ -128,6 +429,7 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
   font-family: 'Cinzel', serif;
   text-align: center;
   position: relative;
+  z-index:1;
 }
 
 #oracle-shop-{{ section.id }} .oracle-container {
@@ -138,29 +440,7 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
   padding: 20px;
 }
 
-/* Title */
-#oracle-shop-{{ section.id }} .oracle-heading {
-  text-align: center;
-  margin-bottom: 40px;
-  margin-top: 100px;
-}
-#oracle-shop-{{ section.id }} h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  background: linear-gradient(to right, #4ae5ff, #00ff80);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: glow 3s infinite alternate;
-}
-#oracle-shop-{{ section.id }} .subtitle {
-  color: #ddd;
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
-@keyframes glow {
-  0% { text-shadow: 0 0 10px #0ff; }
-  100% { text-shadow: 0 0 20px #00ff80; }
-}
+
 
 /* Floating animation */
 @keyframes float {
@@ -190,7 +470,9 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
 }
 #oracle-shop-{{ section.id }} .oracle-img {
   width: 220px;
-  animation: float 4s ease-in-out infinite;
+  animation: none;
+  /* animation: float 4s ease-in-out infinite; */
+  
 }
 #oracle-shop-{{ section.id }} .oracle-speech {
   position: absolute;
@@ -221,13 +503,17 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
   align-items: center;
 }
 #oracle-shop-{{ section.id }} .product-slider {
-  background: rgba(0, 0, 0, 0.75);
+  background: #1A2434;
   padding: 30px;
   border-radius: 18px;
-  box-shadow: 0 0 25px rgba(0,255,255,0.35);
+  box-shadow: 0 0 25px rgba(39,93,175,0.35);
   max-width: 400px;
   text-align: center;
   position: relative;
+}
+.product-slider:hover  {
+ box-shadow: 0 0px 60px 20px rgba(39,93,175,0.9);
+ transition: all 0.4s;
 }
 #oracle-shop-{{ section.id }} .product-slider img {
   width: 140px;
@@ -262,6 +548,8 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
 }
 
 /* Buttons */
+
+/* custom-neloy button  */
 #oracle-shop-{{ section.id }} .btn {
   margin: 6px;
   padding: 12px 22px;
@@ -270,12 +558,57 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
+  position:relative; overflow:hidden;
 }
 #oracle-shop-{{ section.id }} .btn.details { background:#222; color:#fff; }
-#oracle-shop-{{ section.id }} .btn.cart { background:#00ff80; color:#000; }
-#oracle-shop-{{ section.id }} .btn.explore { background:#00ff80; color:#000; }
-#oracle-shop-{{ section.id }} .btn.wisdom { background:#111; color:#fff; }
-#oracle-shop-{{ section.id }} .btn:hover { transform: scale(1.05); }
+#oracle-shop-{{ section.id }} .btn.cart { background:#00ff80; color:#fff; }
+#oracle-shop-{{ section.id }} .btn.explore { background:#00ff80; color:#ffffff; }
+#oracle-shop-{{ section.id }} .btn.wisdom {  background:transparent; color:#fff; border:1px solid rgb(255, 255, 255, 0.2); box-shadow: 0 1px 2px rgba(0,0,0,0.05); white-space: nowrap; cursor: pointer;
+  transition: all 0.2s ease; }
+#oracle-shop-{{ section.id }} .btn.explore:hover {  transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+#oracle-shop-{{ section.id }} .btn.wisdom:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+#oracle-shop-{{ section.id }} .btn.wisdom:focus-visible { outline: none; box-shadow: 0 0 0 1px rgba(0,0,0,0.1);}
+#oracle-shop-{{ section.id }} .btn.wisdom:disabled {  pointer-events: none; opacity: 0.5;}
+#oracle-shop-{{ section.id }} .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  left:-100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: translateX(0);
+  z-index: 1;
+}
+#oracle-shop-{{ section.id }} .btn:hover::before {
+  animation: shimmerRL 0.6s forwards;
+}
+
+/* Move left → right */
+@keyframes shimmerRL {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+/* Move right → left */
+@keyframes shimmerLR {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 
 /* Bottom Buttons */
 #oracle-shop-{{ section.id }} .oracle-buttons {
@@ -308,6 +641,7 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
     align-items: center;
     gap: 30px;
     margin-right: 0;
+    
   }
   #oracle-shop-{{ section.id }} .product-slider-wrapper { order: 1; }
   #oracle-shop-{{ section.id }} .oracle-side { order: 2; margin-top: 20px; }
@@ -317,6 +651,93 @@ Auto-slide all products (image + text) every 2 seconds with smooth fade
   #oracle-shop-{{ section.id }} .oracle-speech { position: static; margin-bottom: 12px; font-size: 13px; max-width: 90%; }
   #oracle-shop-{{ section.id }} .oracle-speech::after { display: none; }
   #oracle-shop-{{ section.id }} .btn { padding: 10px 18px; font-size: 0.9rem; }
+}
+
+
+
+/* custom neloy */
+
+
+.radial-wrap {
+        width: 420px;
+        height: 420px;
+        display: grid;
+        place-items: center;
+        margin: 20px;
+    }
+
+    .radial {
+        position: relative;
+        width: 440px;
+        height: 440px;
+        border-radius: 50%;
+        animation: slow-rotate 12s linear infinite;
+        transform-origin: center;
+    }
+
+    .item {
+        --size: 18px;
+        position: absolute;
+        width: var(--size);
+        height: var(--size);
+        margin: calc(-1 * var(--size) / 2);
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+       
+        color: white;
+        font-weight: 600;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    }
+
+    /* 4 items → placed at 0, 90, 180, 270 */
+    .item:nth-child(1) {
+        transform: rotate(0deg) rotate(-0deg);
+        top: 0;
+        left:0;
+         background: #00FF80;
+    }
+
+    .item:nth-child(2) {
+        transform: rotate(90deg) rotate(-90deg);
+        top: 0;
+        right: 0;
+         background: #00FF80;
+    }
+
+    .item:nth-child(3) {
+        transform: rotate(180deg)  rotate(-180deg);
+        bottom: 0;
+        left: 0;
+         background: #157FA5;
+    }
+
+    .item:nth-child(4) {
+        transform: rotate(270deg)  rotate(-270deg);
+        bottom: 0;
+        right: 0;
+         background: #157FA5;
+    }
+
+    @keyframes slow-rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .radial {
+            animation: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+    .oracle-img {
+        width: 250px;
+    }
 }
 {% endstylesheet %}
 
@@ -340,7 +761,7 @@ document.addEventListener("DOMContentLoaded", function () {
     interval = setInterval(() => {
       let nextIndex = (currentIndex + 1) % slides.length;
       showSlide(nextIndex);
-    }, 4000); // 2s per slide
+    }, 3000); // 2s per slide
   }
 
   // Initialize
@@ -359,6 +780,37 @@ document.addEventListener("DOMContentLoaded", function () {
     startInterval();
   }));
 });
+
+// ========== Oracle Speech Cycle ==========
+document.addEventListener("DOMContentLoaded", function () {
+  const shopSection = document.querySelector("#oracle-shop-{{ section.id }}");
+  const speechBox = shopSection.querySelector(".oracle-speech");
+  const wisdomButton = shopSection.querySelector(".btn.wisdom");
+  if (!speechBox || !wisdomButton) return;
+
+  const speeches = [
+    `{{ section.settings.speech | escape }}`,
+    `{{ section.settings.speech2 | escape }}`,
+    `{{ section.settings.speech3 | escape }}`,
+    `{{ section.settings.speech4 | escape }}`
+  ];
+
+  let currentIndex = 0;
+  speechBox.innerHTML = speeches[currentIndex];
+
+  
+  speechBox.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % speeches.length;
+    speechBox.innerHTML = speeches[currentIndex];
+  });
+
+ 
+  wisdomButton.addEventListener("click", (e) => {
+    e.preventDefault(); 
+    currentIndex = (currentIndex + 1) % speeches.length;
+    speechBox.innerHTML = speeches[currentIndex];
+  });
+});
 </script>
 
 {% schema %}
@@ -366,8 +818,12 @@ document.addEventListener("DOMContentLoaded", function () {
   "name": "Oracle Dream Shop",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "The Oracle's Dream Shop" },
+    { "type": "text", "id": "heading2", "label": "Heading2", "default": "The Oracle's Dream Shop" },
     { "type": "textarea", "id": "subtitle", "label": "Subtitle", "default": "Enter the mystical realm where dreams and reality intertwine..." },
-    { "type": "textarea", "id": "speech", "label": "Oracle Speech", "default": "Welcome, seeker of mystical treasures! Step through my portal to discover ancient secrets..." },
+        { "type": "textarea", "id": "speech", "label": "Oracle Speech", "default": "Welcome, seeker of mystical treasures! Step through my portal to discover ancient secrets..." },
+    { "type": "textarea", "id": "speech2", "label": "Oracle Speech2", "default": "Behold the hidden wonders that lie beyond the veil of time!" },
+    { "type": "textarea", "id": "speech3", "label": "Oracle Speech3", "default": "Discover hidden wisdom beyond the stars!" },
+    { "type": "textarea", "id": "speech4", "label": "Oracle Speech4", "default": "Your journey into mystery has just begun!" },
     { "type": "image_picker", "id": "oracle_img", "label": "Oracle Image" },
     { "type": "image_picker", "id": "bg_image", "label": "Background Image" }
   ],
